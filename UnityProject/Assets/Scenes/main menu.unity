@@ -149,7 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6c72ce3ccfc5a45b0251492c779f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSceneNames: []
+  levelSceneNames:
+  - Len test
   menuTitle: Untitled Trap Game
 --- !u!4 &1113117416
 Transform:
