@@ -13,8 +13,11 @@ public class GameManager : MonoBehaviour
     LOST
   };
 
-  public GameManager()
+
+  public void Awake()
   {
+    if(s_instance != null)
+      throw new System.Exception("Two GameManagers in the scene!!!");
     s_instance = this;
   }
 
