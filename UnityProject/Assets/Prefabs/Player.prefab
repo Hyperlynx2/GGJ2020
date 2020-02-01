@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rotationDPS: 180
-  m_speed: 20
+  m_rotationDPS: 450
+  m_speed: 10
   m_trapArmRange: 1
