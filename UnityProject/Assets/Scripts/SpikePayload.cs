@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SpikePayload : BasePayload
 {
+  public AudioClip[] m_activatedSounds;
+
   public override void PayloadActivated()
   {
-    // TODO: move spikes, play sound.
+    foreach (AudioClip clip in m_activatedSounds)
+    {
+      AudioManager.get().PlayOnce(clip);
+    }
 
     GameManager.get().OnPlayerKilled();
   }
