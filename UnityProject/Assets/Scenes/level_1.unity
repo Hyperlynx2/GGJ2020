@@ -591,6 +591,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 54d6e5308988b4cb3919573708241302, type: 2}
+    - target: {fileID: 5532837643400416213, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6486307131891055957, guid: 2373024e6642957488cab99af462ebe0,
         type: 3}
       propertyPath: m_IsTrigger
@@ -601,6 +606,31 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6486307131891055957, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486307131891055957, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838228327766735186, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_disarmPosition
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838228327766735186, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_armedPosition
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838228327766735186, guid: 2373024e6642957488cab99af462ebe0,
+        type: 3}
+      propertyPath: m_spike
+      value: 
+      objectReference: {fileID: 1564307360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2373024e6642957488cab99af462ebe0, type: 3}
 --- !u!1001 &577762455
@@ -774,7 +804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844294740}
   m_LocalRotation: {x: 0.4194771, y: -0, z: -0, w: 0.9077659}
-  m_LocalPosition: {x: -0.9, y: 16.89, z: -13.263311}
+  m_LocalPosition: {x: -0.9, y: 11.89, z: -7.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1234779686}
@@ -1566,6 +1596,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1530103409}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1564307360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5532837643400416213, guid: 2373024e6642957488cab99af462ebe0,
+    type: 3}
+  m_PrefabInstance: {fileID: 532479146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1622615879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2016,6 +2052,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e477970e35310af40903f7d1c2628a9d, type: 3}
+--- !u!1 &2041428033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5226788855918100520, guid: 168f85d5543d74128bbdd60d5bf449c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2990748461746222526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2045234566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2164,10 +2206,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Darts Trap
       objectReference: {fileID: 0}
-    - target: {fileID: 2990748461356736595, guid: 168f85d5543d74128bbdd60d5bf449c6,
+    - target: {fileID: 2990748461356736594, guid: 168f85d5543d74128bbdd60d5bf449c6,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_moveObject
+      value: 
+      objectReference: {fileID: 2041428033}
+    - target: {fileID: 2990748461429884753, guid: 168f85d5543d74128bbdd60d5bf449c6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572371444852484887, guid: 168f85d5543d74128bbdd60d5bf449c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 168f85d5543d74128bbdd60d5bf449c6, type: 3}
@@ -2322,6 +2374,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3097724315802277167, guid: 0cca69d3feb30411cb5af1fef75d21c7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7273579111730248560, guid: 0cca69d3feb30411cb5af1fef75d21c7,
         type: 3}
       propertyPath: m_LocalPosition.x
