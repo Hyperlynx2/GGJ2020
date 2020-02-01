@@ -65,7 +65,9 @@ public class GameManager : MonoBehaviour
     switch(m_gamestate)
     {
       case GAMESTATE.LOST:
-        GUI.DrawTexture(new Rect(Screen.width / 2, Screen.height / 2, m_youLostTexture.width, m_youLostTexture.height), m_youLostTexture);
+        GUI.DrawTexture(new Rect(0, 0,
+          m_youLostTexture.width > Screen.width ? Screen.width : m_youLostTexture.width,
+          m_youLostTexture.height > Screen.height ? Screen.height : m_youLostTexture.width), m_youLostTexture);
         break;
       case GAMESTATE.WON:
         GUI.DrawTexture(new Rect(Screen.width / 2, Screen.height / 2, m_youLostTexture.width, m_youWonTexture.height), m_youWonTexture);
