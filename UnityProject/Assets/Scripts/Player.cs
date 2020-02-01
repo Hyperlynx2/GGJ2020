@@ -53,10 +53,6 @@ public class Player : MonoBehaviour
       m_desiredDirection.x = h;
       m_desiredDirection.Normalize();
 
-      Quaternion rot = Quaternion.RotateTowards(m_body.rotation, 
-                                                Quaternion.LookRotation(m_desiredDirection),
-                                                m_rotationDPS);
-
       m_body.MovePosition(m_body.position + m_desiredDirection * m_speed * Time.deltaTime);
     }
   }
