@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class SpikePayload : BasePayload
 {
+  [SerializeField]
+  private Transform m_spike;
+
+  [SerializeField]
+  private float m_disarmPosition;
+  [SerializeField]
+  private float m_armedPosition;
+
+
   public override void PayloadActivated()
   {
-    // TODO: move spikes, play sound.
-
+    LeanTween.moveLocalY(m_spike.gameObject, m_armedPosition, 0.05f);
     GameManager.get().OnPlayerKilled();
   }
 
   public override void PayloadArmed()
   {
-    Debug.Log("spike trap armed!");
-    // TODO: move the spikes up and down, etc.
+    LeanTween.moveLocalY(m_spike.gameObject, m_disarmPosition, 1.0f);
   }
-
 }

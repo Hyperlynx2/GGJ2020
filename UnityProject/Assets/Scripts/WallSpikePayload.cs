@@ -4,16 +4,39 @@ using UnityEngine;
 
 public class WallSpikePayload : BasePayload
 {
-    public override void PayloadActivated()
+  [SerializeField]
+  private GameObject m_movingObject;
+  private bool m_PlayerInKillzone;
+  
+  public override void PayloadActivated()
   {
-    // TODO: move spikes, play sound.
+    // TODO: Play sound.
 
-    GameManager.get().OnPlayerKilled();
+
+    // Check if the player is within the payload
+    LeanTween.moveLocalZ(m_movingObject, -0.35f, 0.05f);
+    if(m_PlayerInKillzone)
+      GameManager.get().OnPlayerKilled();
   }
 
   public override void PayloadArmed()
   {
-    Debug.Log("spike trap armed!");
-    // TODO: move the spikes up and down, etc.
+    LeanTween.moveLocalZ(m_movingObject, 1.5f, 0.5f);
+  }
+
+    private void OnTriggerEnter(Collider other) 
+  {
+    if(other.tag == "Player")
+    {
+      m_PlayerInKillzone = true;
+    }
+  }
+
+  private void OnTriggerExit(Collider other)
+  {
+    if(other.tag == "Player")
+    {
+      m_PlayerInKillzone = false;
+    }
   }
 }
