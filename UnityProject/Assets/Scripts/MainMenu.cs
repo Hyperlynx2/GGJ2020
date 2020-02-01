@@ -24,7 +24,6 @@ public class MainMenu : MonoBehaviour
 
   public const float HEIGHT_OFFSET = 25F;
   public const float ELEMENT_HEIGHT = 50;
-  public const float ELEMENT_WIDTH = 200;
   public const float SEPARATION = 5;
 
   public const string MENU_SCENE = "mainmenu";
@@ -46,7 +45,7 @@ public class MainMenu : MonoBehaviour
     {
       //TODO: change to be percentage of screen rather than absolute position.
 
-      if(GUI.Button(new Rect(Screen.width * m_widthOffset - levelData.buttonImage.width/ 2,
+      if(GUI.Button(new Rect((Screen.width - levelData.buttonImage.width * m_buttonScale) * m_widthOffset,
         heightOffset,
         levelData.buttonImage.width * m_buttonScale,
         levelData.buttonImage.height * m_buttonScale), levelData.buttonImage))
