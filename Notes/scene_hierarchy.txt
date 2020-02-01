@@ -1,0 +1,98 @@
+do it via the hierarchy.
+have a trigger gameobject with its own collider
+trigger gameobject needs to go up its hierarchy to find its trap and then tell it to activate.
+trap payload has a collider that if it impacts the player while the trap is armed, game over.
+need to have all traps armed to pass a level - maybe later levels have you needing to run past an armed trap or something and double back and rearm it?
+trap state can be on the top level object.
+
+
+wall tiles
+can't walk through them
+
+
+
+*SpikeTrap (prefab)
+|  Trap.cs
+|    Start()
+|     Manager.RegisterTrap(this)
+|    bool m_armed
+|    void OnTriggerActivated()
+|       start the payload moving, set trap back to disarmed
+|    void OnPayloadHit()
+|       game over man!
+|    void Arm()
+|       call when the player presses "arm" while facing it and within range etc?
+|       m_armed = true
+|       tell game manager
+|       Payload.OnArmed()
+|
++--Trigger
+|  trigger collider
+|  trigger.cs
+|    override the Unity OnTriggerEnter and call Trap.OnTriggerActivated
+|
++--SpikePayload
+|  payload collider
+|  SpikePayload.cs : Payload
+|    override OnArmed()
+|      play the pull the spikes back anim.  
+|  
+
+*SmashTrap (prefab)
+|  Trap.cs
+|    Start()
+|     Manager.RegisterTrap(this)
+|    bool m_armed
+|    void OnTriggerActivated()
+|       start the payload moving, set trap back to disarmed
+|    void OnPayloadHit()
+|       game over man!
+|    void Arm()
+|       call when the player presses "arm" while facing it and within range etc?
+|       m_armed = true
+|       tell game manager
+|       Payload.OnArmed()
+|
++--Trigger
+|  trigger collider
+|  trigger.cs
+|    override the Unity OnTriggerEnter and call Trap.OnTriggerActivated
+|  trigger plate 3d asset
+|
++--SmashPayload
+|  payload collider
+|  SmashPayload.cs : Payload
+|    override OnArmed()
+|      play the pull the smashy battering ram back animation
+  +---more complicated swingy death anim thing here.
+
+Not in hierarchy:
+payloadbase.cs
+    override the Unity OnTriggerEnter, and call Trap.OnPayloadHit
+    virtual void OnArmed() - do an animation or move to position or ???
+    void OnHitPlayer() - go tell the player they're dead. call from derived payloads.
+
+
+*GameManager
+|  int m_numTrapsArmed
+|  public void RegisterTrap(Trap)
+|  OnExitTileReached()
+|    if all the traps are armed, you win! and then go back to menu etc.
+
+*Exit tile
+|  collider
+|  ExitTile.cs
+|    OnTriggerActivated
+|    GameManager.OnExitTileReached
+
+Player
+|  Player.cs
+|    public float movespeed
+|    public float angleturnrate
+|    public Update()
+|      take the input and turn etc.
+|    // no ontrigger evaluating the different gameplay triggers - they call us.
+|    void OnHitByPayload()
+|      play dead anim
+|      tell gamemanager we dead?
+|    // actual stop us from going through walls collision stuff.
