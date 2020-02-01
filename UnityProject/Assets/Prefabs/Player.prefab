@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2594760491219229233}
   - component: {fileID: 2594760491219229244}
   - component: {fileID: 2594760491219229232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rotationDPS: 90
-  m_speed: 5
+  m_rotationDPS: 180
+  m_speed: 20
   m_trapArmRange: 1

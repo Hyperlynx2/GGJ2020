@@ -11,49 +11,53 @@ public class Player : MonoBehaviour
 
   private Rigidbody m_body = null;
 
+  private Vector3 m_desiredDirection;
+
   private void Start()
   {
     m_body = gameObject.GetComponent<Rigidbody>();
+    GameManager.get().RegisterPlayer(this);
+    m_desiredDirection = transform.forward;
   }
 
-  // Fixed update is called in sync with physics
-  // Handles movement etc.
-  private void FixedUpdate()
+  // called by GameManager when it's time to arm a trap.
+  public void ArmTrap()
   {
-    float h = Input.GetAxis("Horizontal");
-    float v = Input.GetAxis("Vertical");
+    Ray armTrapRay = new Ray(transform.position, transform.forward);
 
-    if (Input.GetAxis("Arm Trap") > 0)
+    foreach(Trap trap in GameManager.get().GetTraps())
     {
-      Ray armTrapRay = new Ray(transform.position, transform.forward);
-
-      foreach (Trap trap in GameManager.get().GetTraps())
+      RaycastHit dummy;
+      if(trap.GetPayloadCollider().Raycast(armTrapRay, out dummy, m_trapArmRange))
       {
-        RaycastHit dummy;
-        if(trap.GetPayloadCollider().Raycast(armTrapRay, out dummy, m_trapArmRange))
-        {
-          trap.ArmTrap();
-          break; //LHF: naughty - I should use a different control structure instead.
-        }
+        trap.ArmTrap();
+        break; //LHF: naughty - I should use a different control structure instead.
       }
     }
-    // TODO: Too lazy to remove - do it later RON
-    MovePlayer(v, h);
   }
+
+  public void Update()
+  {
+    Quaternion rot = Quaternion.RotateTowards(m_body.rotation,
+                                              Quaternion.LookRotation(m_desiredDirection),
+                                              Time.deltaTime * m_rotationDPS);
+    m_body.MoveRotation(rot);
+  }
+
 
   public void MovePlayer(float v, float h) 
   {
     if(v+h != 0) {
-      Vector3 moveDirection = Vector3.zero;
-      moveDirection.z = v;
-      moveDirection.x = h;
-      moveDirection.Normalize();
+      m_desiredDirection = Vector3.zero;
+      m_desiredDirection.z = v;
+      m_desiredDirection.x = h;
+      m_desiredDirection.Normalize();
 
       Quaternion rot = Quaternion.RotateTowards(m_body.rotation, 
-                                                Quaternion.LookRotation(moveDirection), 
-                                                Time.deltaTime * m_rotationDPS);
-      m_body.MoveRotation(rot);
-      m_body.MovePosition(m_body.position + moveDirection * m_speed * Time.deltaTime);
+                                                Quaternion.LookRotation(m_desiredDirection),
+                                                m_rotationDPS);
+
+      m_body.MovePosition(m_body.position + m_desiredDirection * m_speed * Time.deltaTime);
     }
   }
 
