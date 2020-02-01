@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     m_traps.Add(trap);
   }
 
+  public IReadOnlyCollection<Trap> GetTraps()
+  {
+    return m_traps;
+  }
 
   private List<Trap> m_traps = new List<Trap> { };
   private static GameManager s_instance;

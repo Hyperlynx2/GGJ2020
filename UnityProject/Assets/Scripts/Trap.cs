@@ -18,13 +18,25 @@ public class Trap : MonoBehaviour
   public void TripwireActivated()
   {
     // LHF: TODO: double check that the collider is the player?
-    m_armed = false;
+    if(m_armed)
+    {
+      m_payload.PayloadActivated();
+      m_armed = false;
+    }
+    else
+    {
+      Debug.Log("safe! trap not armed");
+    }
+  }
 
-    m_payload.PayloadActivated();
+  // for convenience, so the player can raycast to see if they arm them.
+  public Collider GetPayloadCollider()
+  {
+    return m_payload.GetComponent<Collider>();
   }
 
   // called by the player.
-  public void TrapArmed()
+  public void ArmTrap()
   {
     m_armed = true;
     m_payload.PayloadArmed();
