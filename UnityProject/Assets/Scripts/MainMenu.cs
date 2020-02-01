@@ -3,9 +3,14 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour 
 {
-  public string[] levelSceneNames;
+  [System.Serializable]
+  public struct LevelData
+  {
+    public string name;
+    public int sceneBuildIndex;
+  };
 
-  public string menuTitle;
+  public LevelData[] levels;
 
   public const float HEIGHT_OFFSET = 25F;
   public const float ELEMENT_HEIGHT = 50;
@@ -19,20 +24,17 @@ public class MainMenu : MonoBehaviour
     //GUI.skin = skin;
     
     float heightOffset = HEIGHT_OFFSET;
-    
-    GUI.Label(new Rect(Screen.width/2 - ELEMENT_WIDTH/2, heightOffset, ELEMENT_WIDTH, ELEMENT_HEIGHT),
-        menuTitle);
 
     heightOffset += ELEMENT_HEIGHT *2;
       
     //god help you if you haven't got the labels and scenes right sized!
-    for(int i = 0; i < levelSceneNames.Length; ++i)
+    for(int i = 0; i < levels.Length; ++i)
     {
       //TODO: change to be percentage of screen rather than absolute position.
 
-      if(GUI.Button(new Rect(Screen.width /2 - ELEMENT_WIDTH/2, heightOffset, ELEMENT_WIDTH, ELEMENT_HEIGHT), levelSceneNames[i]))
+      if(GUI.Button(new Rect(Screen.width /2 - ELEMENT_WIDTH/2, heightOffset, ELEMENT_WIDTH, ELEMENT_HEIGHT), levels[i].name))
       {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levelSceneNames[i].ToLower());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(levels[i].sceneBuildIndex);
       }
         
       heightOffset += ELEMENT_HEIGHT + SEPARATION;
