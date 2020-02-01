@@ -151,9 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_splashImage: {fileID: 2800000, guid: fd84f07092e2cad4da6311290874bc78, type: 3}
   m_playButton: {fileID: 2800000, guid: f49b845bd7f683044b620f3ae5f26857, type: 3}
-  m_playButtonPos: {x: 3, y: 340}
+  m_playButtonPos: {x: 0.1, y: 0.2}
   m_exitButton: {fileID: 2800000, guid: 2905745dbb0812b4b9bd7ca52742515c, type: 3}
-  m_exitButtonPos: {x: 175, y: 340}
+  m_exitButtonPos: {x: 0.1, y: 0.54}
   m_buttonScale: 0.3
   m_mainMenuScene: main menu
 --- !u!4 &1455633462

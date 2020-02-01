@@ -23,10 +23,16 @@ public class SplashScreen : MonoBehaviour
   {
     GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), m_splashImage);
 
-    if(GUI.Button(new Rect(m_playButtonPos.x, m_playButtonPos.y, m_playButton.width * m_buttonScale, m_playButton.height * m_buttonScale), m_playButton))
+    if(GUI.Button(new Rect(m_playButtonPos.x * Screen.width,
+      m_playButtonPos.y * Screen.height, m_playButton.width * m_buttonScale, m_playButton.height * m_buttonScale), m_playButton))
+    {
       UnityEngine.SceneManagement.SceneManager.LoadScene(m_mainMenuScene);
+    }
 
-    if(GUI.Button(new Rect(m_exitButtonPos.x, m_exitButtonPos.y, m_exitButton.width * m_buttonScale, m_exitButton.height * m_buttonScale), m_exitButton))
+    if(GUI.Button(new Rect(m_exitButtonPos.x * Screen.width,
+      m_exitButtonPos.y * Screen.height, m_exitButton.width * m_buttonScale, m_exitButton.height * m_buttonScale), m_exitButton))
+    {
       Application.Quit();
+    }
   }
 }
