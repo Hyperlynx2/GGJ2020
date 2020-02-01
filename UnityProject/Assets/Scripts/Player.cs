@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
   public void ArmTrap()
   {
     Ray armTrapRay = new Ray(transform.position, transform.forward);
-
+    Debug.DrawRay(transform.position, transform.forward, Color.red);
     foreach(Trap trap in GameManager.get().GetTraps())
     {
       RaycastHit dummy;
