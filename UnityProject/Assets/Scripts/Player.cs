@@ -9,6 +9,13 @@ public class Player : MonoBehaviour
   // should be the width of a tile
   public float m_trapArmRange = 1;
 
+  private Rigidbody m_body = null;
+
+  private void Start()
+  {
+    m_body = gameObject.GetComponent<Rigidbody>();
+  }
+
   // Fixed update is called in sync with physics
   // Handles movement etc.
   private void FixedUpdate()
@@ -30,9 +37,24 @@ public class Player : MonoBehaviour
         }
       }
     }
+    // TODO: Too lazy to remove - do it later RON
+    MovePlayer(v, h);
+  }
 
-    transform.Rotate(new Vector3(0, 1, 0), m_rotationDPS * Time.deltaTime * h);
-    transform.position += transform.forward * m_speed * Time.deltaTime * v;
+  public void MovePlayer(float v, float h) 
+  {
+    if(v+h != 0) {
+      Vector3 moveDirection = Vector3.zero;
+      moveDirection.z = v;
+      moveDirection.x = h;
+      moveDirection.Normalize();
+
+      Quaternion rot = Quaternion.RotateTowards(m_body.rotation, 
+                                                Quaternion.LookRotation(moveDirection), 
+                                                Time.deltaTime * m_rotationDPS);
+      m_body.MoveRotation(rot);
+      m_body.MovePosition(m_body.position + moveDirection * m_speed * Time.deltaTime);
+    }
   }
 
 }
