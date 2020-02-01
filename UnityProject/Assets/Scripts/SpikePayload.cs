@@ -11,10 +11,11 @@ public class SpikePayload : BasePayload
 
   public override void PayloadArmed()
   {
-    throw new System.NotImplementedException();
+    Debug.Log("spike trap armed!");
+    // TODO: move the spikes up and down, etc.
   }
 
 
-  // TODO: move the spikes up and down, etc.
+
 
 }
