@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour
   [Range(0,1)]
   public float m_buttonScale;
 
+  public GUISkin m_guiSkin;
+
   public const float HEIGHT_OFFSET = 25F;
   public const float ELEMENT_HEIGHT = 50;
   public const float ELEMENT_WIDTH = 200;
@@ -29,6 +31,9 @@ public class MainMenu : MonoBehaviour
 
   public void OnGUI()
   {
+
+    if(m_guiSkin != null)
+      GUI.skin = m_guiSkin;
     
     if (m_backgroundImage != null)
       GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_backgroundImage);

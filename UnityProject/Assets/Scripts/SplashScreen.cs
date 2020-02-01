@@ -18,9 +18,14 @@ public class SplashScreen : MonoBehaviour
 
   public string m_mainMenuScene;
 
+  public GUISkin m_guiSkin;
+
   // Update is called once per frame
   void OnGUI()
   {
+    if(m_guiSkin != null)
+      GUI.skin = m_guiSkin;
+
     GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height), m_splashImage);
 
     if(GUI.Button(new Rect(m_playButtonPos.x * Screen.width,

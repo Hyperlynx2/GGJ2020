@@ -239,6 +239,7 @@ MonoBehaviour:
   m_exitButtonPos: {x: 0.1, y: 0.54}
   m_buttonScale: 0.3
   m_mainMenuScene: main menu
+  m_guiSkin: {fileID: 11400000, guid: fd653dbfd037d864ba2fe645ea81e12f, type: 2}
 --- !u!4 &1455633462
 Transform:
   m_ObjectHideFlags: 0

@@ -155,6 +155,7 @@ MonoBehaviour:
     sceneBuildIndex: 2
   m_widthOffset: 0.4
   m_buttonScale: 0.3
+  m_guiSkin: {fileID: 11400000, guid: fd653dbfd037d864ba2fe645ea81e12f, type: 2}
 --- !u!4 &1113117416
 Transform:
   m_ObjectHideFlags: 0
