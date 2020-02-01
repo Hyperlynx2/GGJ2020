@@ -10,6 +10,20 @@ public class GameManager : MonoBehaviour
     s_instance = this;
   }
 
+  // We do different things with the input depending on the game state, so handle input here.
+  private void FixedUpdate()
+  {
+    float h = Input.GetAxis("Horizontal");
+    float v = Input.GetAxis("Vertical");
+
+    if(Input.GetAxis("Arm Trap") > 0)
+    {
+      m_player.ArmTrap();
+    }
+
+    m_player.MovePlayer(v, h);
+  }
+
   public static GameManager get()
   {
     return s_instance;
@@ -19,6 +33,14 @@ public class GameManager : MonoBehaviour
   public void RegisterTrap(Trap trap)
   {
     m_traps.Add(trap);
+  }
+
+  public void RegisterPlayer(Player player)
+  {
+    if(m_player != null)
+      throw new System.Exception("Two players????");
+
+    m_player = player;
   }
 
   public IReadOnlyCollection<Trap> GetTraps()
@@ -45,5 +67,7 @@ public class GameManager : MonoBehaviour
 
   private List<Trap> m_traps = new List<Trap> { };
   private static GameManager s_instance;
+
+  private Player m_player;
 
 }

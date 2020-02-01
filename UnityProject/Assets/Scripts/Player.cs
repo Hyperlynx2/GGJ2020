@@ -14,32 +14,25 @@ public class Player : MonoBehaviour
   private void Start()
   {
     m_body = gameObject.GetComponent<Rigidbody>();
+    GameManager.get().RegisterPlayer(this);
   }
 
-  // Fixed update is called in sync with physics
-  // Handles movement etc.
-  private void FixedUpdate()
+  // called by GameManager when it's time to arm a trap.
+  public void ArmTrap()
   {
-    float h = Input.GetAxis("Horizontal");
-    float v = Input.GetAxis("Vertical");
+    Ray armTrapRay = new Ray(transform.position, transform.forward);
 
-    if (Input.GetAxis("Arm Trap") > 0)
+    foreach(Trap trap in GameManager.get().GetTraps())
     {
-      Ray armTrapRay = new Ray(transform.position, transform.forward);
-
-      foreach (Trap trap in GameManager.get().GetTraps())
+      RaycastHit dummy;
+      if(trap.GetPayloadCollider().Raycast(armTrapRay, out dummy, m_trapArmRange))
       {
-        RaycastHit dummy;
-        if(trap.GetPayloadCollider().Raycast(armTrapRay, out dummy, m_trapArmRange))
-        {
-          trap.ArmTrap();
-          break; //LHF: naughty - I should use a different control structure instead.
-        }
+        trap.ArmTrap();
+        break; //LHF: naughty - I should use a different control structure instead.
       }
     }
-    // TODO: Too lazy to remove - do it later RON
-    MovePlayer(v, h);
   }
+
 
   public void MovePlayer(float v, float h) 
   {
