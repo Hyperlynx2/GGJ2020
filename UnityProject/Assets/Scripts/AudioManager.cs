@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
+  // LHF: this probably should go on another object, but I can't think what.
+  public AudioClip m_backgroundMusic;
+
   private static AudioManager s_instance = null;
 
   public static AudioManager get() {return s_instance;}
@@ -13,7 +16,9 @@ public class AudioManager : MonoBehaviour
       throw new System.Exception("AudioManager is a singleton!");
 
     s_instance = this;
+    DontDestroyOnLoad(s_instance);
 
+    Play(m_backgroundMusic);
   }
 
   public void PlayOnce(AudioClip sound)
