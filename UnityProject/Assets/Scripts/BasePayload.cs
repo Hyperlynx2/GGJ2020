@@ -10,10 +10,4 @@ public abstract class BasePayload: MonoBehaviour
 
   // player stepped on the trigger! start the animation.
   public abstract void PayloadActivated();
-
-  // call from derived classes
-  public void OnPlayerHit()
-  {
-    // TODO: LHF: tell the player they're dead!
-  }
 }

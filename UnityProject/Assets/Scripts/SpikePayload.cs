@@ -13,8 +13,15 @@ public class SpikePayload : BasePayload
   private float m_armedPosition;
 
 
+  public AudioClip[] m_activatedSounds;
+
   public override void PayloadActivated()
   {
+    foreach (AudioClip clip in m_activatedSounds)
+    {
+      AudioManager.get().PlayOnce(clip);
+    }
+
     LeanTween.moveLocalY(m_spike.gameObject, m_armedPosition, 0.05f);
     GameManager.get().OnPlayerKilled();
   }

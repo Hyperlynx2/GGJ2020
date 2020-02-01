@@ -13,8 +13,13 @@ public class GameManager : MonoBehaviour
     LOST
   };
 
-  public GameManager()
+  public Texture m_youWonTexture;
+  public Texture m_youLostTexture;
+
+  public void Awake()
   {
+    if(s_instance != null)
+      throw new System.Exception("Two GameManagers in the scene!!!");
     s_instance = this;
   }
 
@@ -23,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Do we want a "Ready? Go!" screen?
     m_gamestate = GAMESTATE.PLAYING;
   }
+
+  public int m_menuSceneIndex;
 
   // We do different things with the input depending on the game state, so handle input here.
   private void FixedUpdate()
@@ -43,7 +50,26 @@ public class GameManager : MonoBehaviour
 
       case GAMESTATE.LOST:
       case GAMESTATE.WON:
-        break; //actually the same, for now. TODO: a "press space to continue", to go back to menu.
+        // OnGUI takes care of the visual differences.
+        if(Input.GetAxis("Arm Trap") > 0)
+        {
+          UnityEngine.SceneManagement.SceneManager.LoadScene(m_menuSceneIndex, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
+
+        break;
+    }
+  }
+
+  public void OnGUI()
+  {
+    switch(m_gamestate)
+    {
+      case GAMESTATE.LOST:
+        GUI.DrawTexture(new Rect(Screen.width / 2, Screen.height / 2, m_youLostTexture.width, m_youLostTexture.height), m_youLostTexture);
+        break;
+      case GAMESTATE.WON:
+        GUI.DrawTexture(new Rect(Screen.width / 2, Screen.height / 2, m_youLostTexture.width, m_youWonTexture.height), m_youWonTexture);
+        break;
     }
   }
 
