@@ -15,9 +15,8 @@ public class Player : MonoBehaviour
     float h = Input.GetAxis("Horizontal");
     float v = Input.GetAxis("Vertical");
 
-    Debug.Log(h + " horz " + v + " vert");
-
     transform.Rotate(new Vector3(0, 1, 0), m_rotationDPS * Time.deltaTime * h);
     transform.position += transform.forward * m_speed * Time.deltaTime * v;
   }
+
 }
