@@ -26,6 +26,23 @@ public class GameManager : MonoBehaviour
     return m_traps;
   }
 
+  // Called by the exit tile. See if the player has won.
+  public void OnExitTileReached()
+  {
+    bool allTrapsArmed = true;
+
+    var it = m_traps.GetEnumerator();
+    while(allTrapsArmed && it.MoveNext())
+    {
+      allTrapsArmed &= it.Current.IsArmed();
+    }
+
+    if(allTrapsArmed)
+      Debug.Log("You win!");
+    else
+      Debug.Log("Not all traps armed.");
+  }
+
   private List<Trap> m_traps = new List<Trap> { };
   private static GameManager s_instance;
 
