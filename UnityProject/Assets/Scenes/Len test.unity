@@ -459,6 +459,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2594760491219229232, guid: e477970e35310af40903f7d1c2628a9d,
+        type: 3}
+      propertyPath: m_rotationDPS
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2594760491219229232, guid: e477970e35310af40903f7d1c2628a9d,
+        type: 3}
+      propertyPath: m_speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2594760491219229234, guid: e477970e35310af40903f7d1c2628a9d,
         type: 3}
       propertyPath: m_Mesh
