@@ -541,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 2594760491219229232, guid: e477970e35310af40903f7d1c2628a9d,
         type: 3}
       propertyPath: m_rotationDPS
-      value: 180
+      value: 2400
       objectReference: {fileID: 0}
     - target: {fileID: 2594760491219229232, guid: e477970e35310af40903f7d1c2628a9d,
         type: 3}
