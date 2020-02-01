@@ -70,7 +70,9 @@ public class GameManager : MonoBehaviour
           m_youLostTexture.height > Screen.height ? Screen.height : m_youLostTexture.width), m_youLostTexture);
         break;
       case GAMESTATE.WON:
-        GUI.DrawTexture(new Rect(Screen.width / 2, Screen.height / 2, m_youLostTexture.width, m_youWonTexture.height), m_youWonTexture);
+        GUI.DrawTexture(new Rect(0, 0,
+          m_youWonTexture.width > Screen.width ? Screen.width : m_youWonTexture.width,
+          m_youWonTexture.height > Screen.height ? Screen.height : m_youWonTexture.width), m_youWonTexture);
         break;
     }
   }
