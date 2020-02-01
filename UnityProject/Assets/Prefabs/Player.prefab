@@ -125,4 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rotationDPS: 450
   m_speed: 10
-  m_trapArmRange: 1
+  m_trapArmRange: 2.5
