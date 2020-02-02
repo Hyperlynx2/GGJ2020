@@ -45,4 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_youWonTexture: {fileID: 2800000, guid: 89c10dedc03bce7448be5bb8d6369fb0, type: 3}
   m_youLostTexture: {fileID: 2800000, guid: a3195e43de4a29441b6e5ab1041704cf, type: 3}
+  m_cantLeaveYetTexture: {fileID: 2800000, guid: eb3f4d4534897e44ca9372377ac3c7d6,
+    type: 3}
+  m_cantLeaveYetDisplayDuration: 3
+  m_cantLeaveYetHorz: 0.08
+  m_cantLeaveYetVert: 0.8
+  m_cantLeaveYetScale: 0.28
   m_menuSceneIndex: 1
