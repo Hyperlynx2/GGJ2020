@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
   [Range(0, 1)]
   public float m_cantLeaveYetScale;
 
+  public float m_endGameDelay;
+  private float m_endGameDelayRemaining;
+
   public void Awake()
   {
     if(s_instance != null)
@@ -75,10 +78,14 @@ public class GameManager : MonoBehaviour
     switch(m_gamestate)
     {
       case GAMESTATE.LOST:
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youLostTexture);
+        m_endGameDelayRemaining -= Time.deltaTime;
+        if (m_endGameDelayRemaining <= 0)
+          GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youLostTexture);
         break;
       case GAMESTATE.WON:
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youWonTexture);
+        //m_endGameDelayRemaining -= Time.deltaTime; // LHF: nah, no need
+        if(m_endGameDelayRemaining <= 0)
+          GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youWonTexture);
         break;
       case GAMESTATE.PLAYING:
         if (m_cantLeaveYetDisplayTimeRemaining > 0)
@@ -132,6 +139,7 @@ public class GameManager : MonoBehaviour
     {
       Debug.Log("You win!");
       m_gamestate = GAMESTATE.WON;
+      m_endGameDelayRemaining = m_endGameDelay;
     }
     else
     {
@@ -144,6 +152,7 @@ public class GameManager : MonoBehaviour
   {
     Debug.Log("Ouch!");
     m_gamestate = GAMESTATE.LOST;
+    m_endGameDelayRemaining = m_endGameDelay;
   }
 
   private List<Trap> m_traps = new List<Trap> { };
