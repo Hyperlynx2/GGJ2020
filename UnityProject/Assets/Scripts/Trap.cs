@@ -41,7 +41,8 @@ public class Trap : MonoBehaviour
   {
     if(!m_armed)
     {
-      AudioManager.get().PlayOnce(m_armTrapSound);
+      if (AudioManager.get())
+        AudioManager.get().PlayOnce(m_armTrapSound);
       m_armed = true;
       m_payload.PayloadArmed();
     }

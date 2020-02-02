@@ -17,9 +17,12 @@ public class SpikePayload : BasePayload
 
   public override void PayloadActivated()
   {
-    foreach (AudioClip clip in m_activatedSounds)
+    if(AudioManager.get())
     {
-      AudioManager.get().PlayOnce(clip);
+      foreach(AudioClip clip in m_activatedSounds)
+      {
+        AudioManager.get().PlayOnce(clip);
+      }
     }
 
     LeanTween.moveLocalY(m_spike.gameObject, m_armedPosition, 0.05f);
