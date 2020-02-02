@@ -156,6 +156,7 @@ MonoBehaviour:
   - buttonImage: {fileID: 2800000, guid: f0f06a93fb1b5cc4abfb4717ce916c7d, type: 3}
     sceneBuildIndex: 2
   m_widthOffset: 0.458
+  m_heightOffset: 0.15
   m_buttonScale: 0.3
   m_guiSkin: {fileID: 11400000, guid: fd653dbfd037d864ba2fe645ea81e12f, type: 2}
 --- !u!4 &1113117416
