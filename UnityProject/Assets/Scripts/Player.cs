@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{  
+  private PlayerInteractor m_interactor;
   public float m_rotationDPS = 30;
   public float m_speed = 50;
 
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
   private void Start()
   {
     m_body = gameObject.GetComponent<Rigidbody>();
+    m_interactor = gameObject.GetComponentInChildren<PlayerInteractor>();
     GameManager.get().RegisterPlayer(this);
     m_desiredDirection = transform.forward;
   }
@@ -23,17 +25,8 @@ public class Player : MonoBehaviour
   // called by GameManager when it's time to arm a trap.
   public void ArmTrap()
   {
-    Ray armTrapRay = new Ray(transform.position, transform.forward);
-    Debug.DrawRay(transform.position, transform.forward, Color.red);
-    foreach(Trap trap in GameManager.get().GetTraps())
-    {
-      RaycastHit dummy;
-      if(trap.GetPayloadCollider().Raycast(armTrapRay, out dummy, m_trapArmRange))
-      {
-        trap.ArmTrap();
-        break; //LHF: naughty - I should use a different control structure instead.
-      }
-    }
+    if(m_interactor.SelectedTrap != null)
+      m_interactor.SelectedTrap.ArmTrap();
   }
 
   public void Update()
@@ -43,7 +36,6 @@ public class Player : MonoBehaviour
                                               Time.deltaTime * m_rotationDPS);
     m_body.MoveRotation(rot);
   }
-
 
   public void MovePlayer(float v, float h) 
   {
@@ -56,5 +48,4 @@ public class Player : MonoBehaviour
       m_body.MovePosition(m_body.position + m_desiredDirection * m_speed * Time.deltaTime);
     }
   }
-
 }
