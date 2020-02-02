@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
+  [SerializeField]
+  private GameObject m_particles;
   public AudioClip m_armTrapSound;
+  private BasePayload m_payload;
+
+  private bool m_armed = false;
 
   void Start()
   {
     GameManager.get().RegisterTrap(this);
-
+    if(m_particles != null)
+      m_particles.SetActive(false);
     m_payload = GetComponentInChildren<BasePayload>();
     if(m_payload == null)
       Debug.LogError("Trap missing payload!");
+  }
+
+  public void HighlightTrap(bool highlight)
+  {
+    if(m_particles != null)
+      m_particles.SetActive(highlight);
   }
 
   // called by the tripwire.
@@ -53,9 +65,4 @@ public class Trap : MonoBehaviour
   {
     return m_armed;
   }
-
-  private BasePayload m_payload;
-
-  private bool m_armed = false;
-
 }
