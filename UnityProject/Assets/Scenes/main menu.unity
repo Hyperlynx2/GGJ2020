@@ -152,9 +152,9 @@ MonoBehaviour:
   m_backgroundImage: {fileID: 2800000, guid: b89af02d2c08d394089da4288412768e, type: 3}
   levels:
   - buttonImage: {fileID: 2800000, guid: 9bec73e319c10f9478083f01b9844e7d, type: 3}
-    sceneBuildIndex: 1
-  - buttonImage: {fileID: 2800000, guid: f0f06a93fb1b5cc4abfb4717ce916c7d, type: 3}
     sceneBuildIndex: 2
+  - buttonImage: {fileID: 2800000, guid: f0f06a93fb1b5cc4abfb4717ce916c7d, type: 3}
+    sceneBuildIndex: 3
   m_widthOffset: 0.458
   m_heightOffset: 0.15
   m_buttonScale: 0.3
