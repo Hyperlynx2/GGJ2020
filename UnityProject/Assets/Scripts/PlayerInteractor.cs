@@ -15,11 +15,16 @@ public class PlayerInteractor : MonoBehaviour
             if(LayerMask.LayerToName(obj.layer) == "Payloads") {
                 Debug.Log("Entered: " + other.gameObject);
                 m_selectedTrap = obj.transform.parent.GetComponent<Trap>();
+                m_selectedTrap.HighlightTrap(true);
             }
         }
     }
 
     private void OnTriggerExit(Collider other) {
+        if(m_selectedTrap != null) {
+            m_selectedTrap.HighlightTrap(false);
+        }
+        
         m_selectedTrap = null;
     }
 }
