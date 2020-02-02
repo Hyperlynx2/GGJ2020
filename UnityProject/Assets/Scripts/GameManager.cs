@@ -16,6 +16,16 @@ public class GameManager : MonoBehaviour
   public Texture m_youWonTexture;
   public Texture m_youLostTexture;
 
+  public Texture m_cantLeaveYetTexture;
+  public float m_cantLeaveYetDisplayDuration;
+  private float m_cantLeaveYetDisplayTimeRemaining;
+  [Range(0, 1)]
+  public float m_cantLeaveYetHorz;
+  [Range(0, 1)]
+  public float m_cantLeaveYetVert;
+  [Range(0, 1)]
+  public float m_cantLeaveYetScale;
+
   public void Awake()
   {
     if(s_instance != null)
@@ -74,6 +84,16 @@ public class GameManager : MonoBehaviour
           m_youWonTexture.width > Screen.width ? Screen.width : m_youWonTexture.width,
           m_youWonTexture.height > Screen.height ? Screen.height : m_youWonTexture.width), m_youWonTexture);
         break;
+      case GAMESTATE.PLAYING:
+        if (m_cantLeaveYetDisplayTimeRemaining > 0)
+        {
+          m_cantLeaveYetDisplayTimeRemaining -= Time.deltaTime;
+
+          GUI.DrawTexture(new Rect(Screen.width * m_cantLeaveYetHorz, Screen.height * m_cantLeaveYetVert,
+            m_cantLeaveYetTexture.width * m_cantLeaveYetScale,
+            m_cantLeaveYetTexture.height * m_cantLeaveYetScale), m_cantLeaveYetTexture);
+        }
+        break;
     }
   }
 
@@ -118,7 +138,10 @@ public class GameManager : MonoBehaviour
       m_gamestate = GAMESTATE.WON;
     }
     else
+    {
+      m_cantLeaveYetDisplayTimeRemaining = m_cantLeaveYetDisplayDuration;
       Debug.Log("Not all traps armed.");
+    }
   }
 
   public void OnPlayerKilled()
