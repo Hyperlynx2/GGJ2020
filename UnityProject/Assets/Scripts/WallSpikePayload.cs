@@ -7,11 +7,16 @@ public class WallSpikePayload : BasePayload
   [SerializeField]
   private GameObject m_movingObject;
   private bool m_PlayerInKillzone;
-  
+  public AudioClip[] m_activatedSounds;
   public override void PayloadActivated()
   {
-    // TODO: Play sound.
-
+    if(AudioManager.get())
+    {
+      foreach(AudioClip clip in m_activatedSounds)
+      {
+        AudioManager.get().PlayOnce(clip);
+      }
+    }
 
     // Check if the player is within the payload
     LeanTween.moveLocalZ(m_movingObject, -0.35f, 0.05f);

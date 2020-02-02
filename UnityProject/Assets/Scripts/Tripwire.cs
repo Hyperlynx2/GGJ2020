@@ -19,7 +19,10 @@ public class Tripwire : MonoBehaviour
   private void OnTriggerEnter(Collider other)
   {
     // TODO: LHF: only if it's the player?
-    m_trap.TripwireActivated();
+    if(m_trap.IsArmed()) {
+      if(other.gameObject.tag == "Player")
+        m_trap.TripwireActivated();
+    }
   }
 
 }

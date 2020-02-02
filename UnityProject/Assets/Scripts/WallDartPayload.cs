@@ -7,10 +7,17 @@ public class WallDartPayload : BasePayload
   [SerializeField]
   private GameObject m_moveObject;
   private bool m_PlayerInKillzone;
+  public AudioClip[] m_activatedSounds;
 
   public override void PayloadActivated()
   {
-    // TODO: move spikes, play sound.
+    if(AudioManager.get())
+    {
+      foreach(AudioClip clip in m_activatedSounds)
+      {
+        AudioManager.get().PlayOnce(clip);
+      }
+    }
 
     LeanTween.moveLocalZ(m_moveObject, -5.0f, 0.05f);
 

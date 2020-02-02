@@ -13,7 +13,6 @@ public class PlayerInteractor : MonoBehaviour
             GameObject obj = other.gameObject;
 
             if(LayerMask.LayerToName(obj.layer) == "Payloads") {
-                Debug.Log("Entered: " + other.gameObject);
                 m_selectedTrap = obj.transform.parent.GetComponent<Trap>();
                 m_selectedTrap.HighlightTrap(true);
             }

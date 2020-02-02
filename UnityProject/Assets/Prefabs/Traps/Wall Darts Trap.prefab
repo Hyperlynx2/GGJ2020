@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_particles: {fileID: 2264384769448608429}
-  m_armTrapSound: {fileID: 0}
+  m_armTrapSound: {fileID: 8300000, guid: 8b28df38c0ee4354b80c58c017f870e7, type: 3}
 --- !u!1 &2990748461429884755
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveObject: {fileID: 5226788855918100520}
+  m_activatedSounds:
+  - {fileID: 8300000, guid: 0e83a564c0f604b1fa2c0b481cd49efd, type: 3}
 --- !u!1001 &2990748460594904483
 PrefabInstance:
   m_ObjectHideFlags: 0
