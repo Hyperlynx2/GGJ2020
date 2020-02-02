@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272798e1426330a4c87ebbaf7d28fbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_armTrapSound: {fileID: 8300000, guid: 8b28df38c0ee4354b80c58c017f870e7, type: 3}
 --- !u!1 &1014438507770218565
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9feeea567f31a12448800554b6d2d11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spike: {fileID: 0}
+  m_disarmPosition: 0
+  m_armedPosition: 0
   m_activatedSounds:
   - {fileID: 8300000, guid: dcdae02bb6a04714ca6ecc904fffa311, type: 3}
 --- !u!1001 &5515051749644103587

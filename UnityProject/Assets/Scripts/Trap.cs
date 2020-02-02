@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-  // Start is called before the first frame update
+  public AudioClip m_armTrapSound;
+
   void Start()
   {
     GameManager.get().RegisterTrap(this);
@@ -38,8 +39,12 @@ public class Trap : MonoBehaviour
   // called by the player.
   public void ArmTrap()
   {
-    m_armed = true;
-    m_payload.PayloadArmed();
+    if(!m_armed)
+    {
+      AudioManager.get().PlayOnce(m_armTrapSound);
+      m_armed = true;
+      m_payload.PayloadArmed();
+    }
   }
 
   // So that we can count how many tiles are armed to see if you win
