@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
       case GAMESTATE.LOST:
       case GAMESTATE.WON:
         // OnGUI takes care of the visual differences.
-        if(Input.GetAxis("Arm Trap") > 0)
+        if(Input.GetAxis("Continue") > 0)
         {
           UnityEngine.SceneManagement.SceneManager.LoadScene(m_menuSceneIndex, UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
