@@ -83,9 +83,7 @@ public class GameManager : MonoBehaviour
           GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youLostTexture);
         break;
       case GAMESTATE.WON:
-        //m_endGameDelayRemaining -= Time.deltaTime; // LHF: nah, no need
-        if(m_endGameDelayRemaining <= 0)
-          GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youWonTexture);
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youWonTexture);
         break;
       case GAMESTATE.PLAYING:
         if (m_cantLeaveYetDisplayTimeRemaining > 0)
