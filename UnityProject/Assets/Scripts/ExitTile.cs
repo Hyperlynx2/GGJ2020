@@ -9,4 +9,9 @@ public class ExitTile : MonoBehaviour
     GameManager.get().OnExitTileReached();
   }
 
+  private void OnTriggerExit(Collider other)
+  {
+    GameManager.get().OnExitTileLeft();
+  }
+
 }

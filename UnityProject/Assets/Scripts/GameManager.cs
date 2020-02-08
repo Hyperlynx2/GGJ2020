@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
   public Texture m_youLostTexture;
 
   public Texture m_cantLeaveYetTexture;
-  public float m_cantLeaveYetDisplayDuration;
-  private float m_cantLeaveYetDisplayTimeRemaining;
-  [Range(0, 1)]
+
   public float m_cantLeaveYetHorz;
   [Range(0, 1)]
   public float m_cantLeaveYetVert;
   [Range(0, 1)]
   public float m_cantLeaveYetScale;
+
+  private bool m_displayCantLeaveYet = false;
 
   public float m_endGameDelay;
   private float m_endGameDelayRemaining;
@@ -86,10 +86,8 @@ public class GameManager : MonoBehaviour
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), m_youWonTexture);
         break;
       case GAMESTATE.PLAYING:
-        if (m_cantLeaveYetDisplayTimeRemaining > 0)
+        if (m_displayCantLeaveYet)
         {
-          m_cantLeaveYetDisplayTimeRemaining -= Time.deltaTime;
-
           GUI.DrawTexture(new Rect(Screen.width * m_cantLeaveYetHorz, Screen.height * m_cantLeaveYetVert,
             m_cantLeaveYetTexture.width * m_cantLeaveYetScale,
             m_cantLeaveYetTexture.height * m_cantLeaveYetScale), m_cantLeaveYetTexture);
@@ -141,9 +139,15 @@ public class GameManager : MonoBehaviour
     }
     else
     {
-      m_cantLeaveYetDisplayTimeRemaining = m_cantLeaveYetDisplayDuration;
+      m_displayCantLeaveYet = true;
       Debug.Log("Not all traps armed.");
     }
+  }
+
+  // Called by the exit tile. Stop displaying the "you can't leave yet" message, if we were.
+  public void OnExitTileLeft()
+  {
+    m_displayCantLeaveYet = false;
   }
 
   public void OnPlayerKilled()
